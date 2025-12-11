@@ -1,6 +1,3 @@
-const map = require("../Model/map");
-const fs = require("fs").promises;
-const path = require("path");
 const pool = require('../Utils/SQL.js');
 
 
@@ -27,6 +24,7 @@ const MFPage = async (req, res) => {
         final_data['fund_manager'] = data['meta'][0]['fund_manager'];
         final_data['ter'] = data['meta'][0]['ter'];
         final_data['exitload'] = data['exitload'][0]['exit_load_remark'];
+        final_data['category'] = data['meta'][0]['category'];
     
         const response2 = await fetch(`https://dotnet.ngenmarkets.com/ngenindia.asmx/ReturnSQLResult?sql=exec%20c_getSchemeNavJSON%${mf_code}`);
         const nav = await response2.json();
